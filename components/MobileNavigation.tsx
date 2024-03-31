@@ -11,14 +11,16 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { Link } from "next/link";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { sidebarList } from "../contants";
 
 const MobileNavigation = () => {
   const pathname = usePathname();
+  console.log("sidebar", sidebarList);
+
   return (
-    <section className="w-full max-w-[264px] border border-yellow-300">
+    <section className="w-full max-w-[264px]">
       <Sheet>
         <SheetTrigger asChild>
           <Image
@@ -29,7 +31,7 @@ const MobileNavigation = () => {
             className="cursor-pointer sm:hidden"
           />
         </SheetTrigger>
-        <SheetContent side={"left"} className=" bg-dark-1">
+        <SheetContent side={"left"} className="border-none bg-dark-1">
           <Link href={"/"} className="flex items-center gap-1">
             <Image
               src={"/assets/icons/logo.svg"}
@@ -40,7 +42,7 @@ const MobileNavigation = () => {
             />
             <p className="text-[24px] font-extrabold text-white">Meet Ease</p>
           </Link>
-          <div className="border border-yellow overflow-y-auto">
+          <div className="overflow-y-auto">
             <SheetClose asChild>
               <section className="sticky left-0 top-0 flex h-screen w-fit flex-col justify-between bg-dark-1 p-6 pt-28 text-white max-sm:hidden lg:w-[264px]">
                 <div className="flex flex-col gap-6">
@@ -62,7 +64,7 @@ const MobileNavigation = () => {
                           height={20}
                         />
 
-                        <p className="">{i?.label}</p>
+                        <p className="text-white">{i?.label}</p>
                       </Link>
                     );
                   })}
